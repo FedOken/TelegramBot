@@ -40,12 +40,10 @@ class BotController extends Controller
         $content = json_decode($content, true);
 
         Yii::$app->telegram->sendMessage([
-            'chat_id' => 485140930,
-            //'text' => Message::getMessageByType(Message::TYPE_MESSAGE),
-            'text' => ArrayHelper::getValue($content, 'update_id')
+            'chat_id' => ArrayHelper::getValue($content, 'message.id'),
+            'text' => Message::getMessageByType(Message::TYPE_MESSAGE),
         ]);
         return true;
-        //return 'awdawd';
     }
 
 
