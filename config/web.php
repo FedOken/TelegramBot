@@ -7,6 +7,7 @@ $config = [
     'id' => 'basic',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
+    'defaultRoute' => 'site/index',
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
         '@npm'   => '@vendor/npm-asset',
@@ -43,14 +44,18 @@ $config = [
             ],
         ],
         'db' => $db,
-        /*
         'urlManager' => [
             'enablePrettyUrl' => true,
+            //'enableStrictParsing' => true,
             'showScriptName' => false,
             'rules' => [
+                '<controller>/<action>' => '<controller>/<action>'
             ],
         ],
-        */
+        'telegram' => [
+            'class' => 'aki\telegram\Telegram',
+            'botToken' => '1058928977:AAE7TLeY9RefE0LMX58tx_4hqCTMDVDzvhI',
+        ]
     ],
     'params' => $params,
 ];
