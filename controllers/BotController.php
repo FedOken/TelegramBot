@@ -36,6 +36,7 @@ class BotController extends Controller
             'chat_id' => 485140930,
             'text' => 'testawdwad',
         ]);
+        return true;
         //return 'awdawd';
     }
 
