@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\models\Message;
 use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
@@ -61,7 +62,26 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        $modelMessage = new Message();
+        return $this->render('index', ['modelMessage' => $modelMessage]);
+    }
+
+    /**
+     * Save message to
+     * @return Response
+     */
+    public function actionSetBotResponseMessage()
+    {
+        $model = new Message();
+        if ($model->load(Yii::$app->request->post())) {
+            $model = $model->getModel($model);
+            if ($model->load(Yii::$app->request->post()) && $model->save()) {
+                Yii::$app->session->setFlash('success', 'Message saved');
+                return $this->redirect(Yii::$app->request->referrer);
+            }
+        }
+        Yii::$app->session->setFlash('error', 'Something went wrong :(');
+        return $this->redirect(Yii::$app->request->referrer);
     }
 
     /**

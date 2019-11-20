@@ -1,53 +1,33 @@
 <?php
 
-/* @var $this yii\web\View */
+use app\models\Message;
+use yii\widgets\ActiveForm;
+use yii\helpers\Html;
+
+/**
+ * @var $this yii\web\View
+ * @var $modelMessage Message
+ */
 
 $this->title = 'My Yii Application';
 ?>
 <div class="site-index">
 
-    <div class="jumbotron">
-        <h1>Congratulations!</h1>
+	<div class="jumbotron">
+		<h1>Hello!</h1>
 
-        <p class="lead">You have successfully created your Yii-powered application.</p>
+		<p class="lead">Set bot response below</p>
+        <?php $form = ActiveForm::begin([
+        		'validateOnBlur' => false,
+	            'action' => '/site/set-bot-response-message',
+        ]) ?>
 
-        <p><a class="btn btn-lg btn-success" href="http://www.yiiframework.com">Get started with Yii</a></p>
-    </div>
+            <?= $form->field($modelMessage, 'message')->textInput(['value' => $modelMessage->getMessageByType(Message::TYPE_MESSAGE)])->label(false) ?>
+            <?= $form->field($modelMessage, 'type')->hiddenInput(['value' => Message::TYPE_MESSAGE])->label(false) ?>
+			<p>
+				<?= Html::submitButton('Save!', ['class' => 'btn btn-lg btn-success']) ?>
+			</p>
 
-    <div class="body-content">
-
-        <div class="row">
-            <div class="col-lg-4">
-                <h2>Heading</h2>
-
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
-
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/doc/">Yii Documentation &raquo;</a></p>
-            </div>
-            <div class="col-lg-4">
-                <h2>Heading</h2>
-
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
-
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/forum/">Yii Forum &raquo;</a></p>
-            </div>
-            <div class="col-lg-4">
-                <h2>Heading</h2>
-
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
-
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/extensions/">Yii Extensions &raquo;</a></p>
-            </div>
-        </div>
-
-    </div>
+        <?php ActiveForm::end() ?>
+	</div>
 </div>

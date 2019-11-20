@@ -7,15 +7,20 @@ $config = [
     'id' => 'basic',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
-    'defaultRoute' => 'site/index',
+    //'defaultRoute' => 'site/index',
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
         '@npm'   => '@vendor/npm-asset',
     ],
     'components' => [
+        'telegram' => [
+            'class' => 'aki\telegram\Telegram',
+            'botToken' => '1058928977:AAE7TLeY9RefE0LMX58tx_4hqCTMDVDzvhI',
+        ],
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => 'Mj4e4bTMqOCyrazTus2WsYotpg8c5JQh',
+            'baseUrl'=> '',
         ],
         'cache' => [
             'class' => 'yii\caching\FileCache',
@@ -49,13 +54,9 @@ $config = [
             //'enableStrictParsing' => true,
             'showScriptName' => false,
             'rules' => [
-                '<controller>/<action>' => '<controller>/<action>'
+                //'<controller>/<action>' => '<controller>/<action>'
             ],
         ],
-        'telegram' => [
-            'class' => 'aki\telegram\Telegram',
-            'botToken' => '1058928977:AAE7TLeY9RefE0LMX58tx_4hqCTMDVDzvhI',
-        ]
     ],
     'params' => $params,
 ];
