@@ -31,11 +31,11 @@ class BotController extends Controller
 
     public function actionTest()
     {
-//        echo Yii::$app->telegram->botToken;
-//        Yii::$app->telegram->sendMessage([
-//            'chat_id' => 485140930,
-//            'text' => 'testawdwad',
-//        ]);
+        //echo Yii::$app->telegram->botToken;
+        Yii::$app->telegram->sendMessage([
+            'chat_id' => 485140930,
+            'text' => 'testawdwad',
+        ]);
         //return 'awdawd';
     }
 
