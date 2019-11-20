@@ -32,7 +32,10 @@ class BotController extends Controller
         ];
     }
 
-
+    /**
+     * Send message to sender
+     * @return bool
+     */
     public function actionTest()
     {
         Yii::$app->response->statusCode = 200;
@@ -40,7 +43,7 @@ class BotController extends Controller
         $content = json_decode($content, true);
 
         Yii::$app->telegram->sendMessage([
-            'chat_id' => ArrayHelper::getValue($content, 'message.id'),
+            'chat_id' => ArrayHelper::getValue($content, 'message.from.id'),
             'text' => Message::getMessageByType(Message::TYPE_MESSAGE),
         ]);
         return true;
