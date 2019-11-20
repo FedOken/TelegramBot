@@ -8,6 +8,8 @@ use yii\web\Controller;
 
 class BotController extends Controller
 {
+    public $enableCsrfValidation = false;
+
     /**
      * {@inheritdoc}
      */
