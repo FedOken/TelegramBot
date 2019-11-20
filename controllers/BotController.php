@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\models\Message;
 use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
@@ -36,7 +37,7 @@ class BotController extends Controller
         //echo Yii::$app->telegram->botToken;
         Yii::$app->telegram->sendMessage([
             'chat_id' => 485140930,
-            'text' => 'testawdwad',
+            'text' => Message::getMessageByType(Message::TYPE_MESSAGE),
         ]);
         return true;
         //return 'awdawd';

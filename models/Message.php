@@ -52,7 +52,7 @@ class Message extends \yii\db\ActiveRecord
      * @param int $typeId
      * @return Message|null
      */
-    public function getMessageByType($typeId)
+    public static function getMessageByType($typeId)
     {
         return ArrayHelper::getValue(self::findOne(['type' => $typeId]), 'message');
     }
