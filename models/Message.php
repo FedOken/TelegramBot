@@ -52,8 +52,8 @@ class Message extends \yii\db\ActiveRecord
      */
     public static function getConformity(array $request)
     {
-        $requestMessage = ArrayHelper::getValue($request, 'message.text');
-        $model = self::findOne(['request_message' => $requestMessage]);
-        return ArrayHelper::getValue($model, 'response_message');
+        $requestWord = ArrayHelper::getValue($request, 'message.text');
+        $model = self::findOne(['request_word' => $requestWord]);
+        return ArrayHelper::getValue($model, 'response_word');
     }
 }

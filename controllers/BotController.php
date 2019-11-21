@@ -21,7 +21,6 @@ class BotController extends Controller
         $content = file_get_contents("php://input");
         $content = json_decode($content, true);
 
-
         Yii::$app->telegram->sendMessage([
             'chat_id' => ArrayHelper::getValue($content, 'message.from.id'),
             'text' => Message::getConformity($content),
