@@ -27,6 +27,4 @@ class BotController extends Controller
         ]);
         return true;
     }
-
-
 }
