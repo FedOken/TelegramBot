@@ -17,8 +17,8 @@ class MessageSearch extends Message
     public function rules()
     {
         return [
-            [['id', 'enable'], 'integer'],
-            [['message'], 'safe'],
+            [['id'], 'integer'],
+            [['response_word', 'request_word'], 'safe'],
         ];
     }
 
@@ -59,10 +59,10 @@ class MessageSearch extends Message
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'enable' => $this->enable,
         ]);
 
-        $query->andFilterWhere(['like', 'message', $this->message]);
+        $query->andFilterWhere(['like', 'request_word', $this->request_word]);
+        $query->andFilterWhere(['like', 'response_word', $this->response_word]);
 
         return $dataProvider;
     }

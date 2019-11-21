@@ -22,18 +22,9 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'message',
-            [
-                'attribute' => 'enable',
-                'value' => function ($model) {
-    	            if ($model->enable) {
-                        return 'Enable';
-	                } else {
-    	            	return '';
-	                }
-                },
-	            'filter' => ['Disable', 'Enable'],
-            ],
+            'request_word',
+            'response_word',
+
             [
                 'class' => 'yii\grid\ActionColumn',
                 'template' => '{update} {delete}',
